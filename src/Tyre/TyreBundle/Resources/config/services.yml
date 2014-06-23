@@ -1,0 +1,7 @@
+parameters:
+#    tyre_tyre.example.class: Tyre\TyreBundle\Example
+
+services:
+#    tyre_tyre.example:
+#        class: %tyre_tyre.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

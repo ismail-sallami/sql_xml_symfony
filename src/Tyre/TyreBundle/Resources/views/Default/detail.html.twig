@@ -1,0 +1,77 @@
+{%extends "TyreTyreBundle:Default:index.html.twig"%}
+{%block stylesheets %}
+<style type="text/css">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .table {
+            padding: 19px 29px 29px;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        }
+       
+        
+
+    </style>
+{%endblock%}
+   {%block container %}
+
+    <h1>Product details</h1>
+<div class="container" >
+            <a style="font-size:18px;"href="{{ path('tyre_tyre_search') }}">
+                <img src="http://www.unibay.com/images/tpl/search.png"> New Search
+            </a></br></br>
+          <table class="table">
+    <tr>
+        <th style="text-align:center">Product Title</th>
+        <th style="text-align:center">Product Name</th>
+        <th style="text-align:center">Product Image</th>
+        <th style="text-align:center">Product Price</th>
+    </tr>
+    {% if results|length  ==0 and xml_result|length == 0 %}
+        <tr>
+        <p style="color:red;font-size:18px;"><img src="http://www.pclogger.net/img/error.png">No matching results found!</p>
+        </tr>
+    {% else %}    
+       {% for item in results %}
+                <tr>
+                    <td>{{ item.getManufacturer }}</td>
+                    <td>{{ item.getName }}</td>
+                    <td style="text-align:center"><a href="{{ item.getProductImage }}">
+                            <img src="http://www.medialabasia.in/images/jpg-icon.png">
+                        </a></td>
+                    <td style="text-align:center">{{ item.getPrice }}</td>
+                </tr>
+       {% endfor %}
+    
+       
+  
+
+       
+            {% for product in xml_result %}
+                <tr>
+                    <td>{{ product.manufacturer }}</td>
+                    <td>{{ product.name }}</td>
+                    <td style="text-align:center"><a href="{{ product.product_image }}">
+                            <img src="http://www.medialabasia.in/images/jpg-icon.png">
+                        </a></td>
+                    <td style="text-align:center">{{ product.price }}</td>
+                </tr>
+            {% endfor %}
+       
+       {% endif %}  
+    </table>
+</div>
+        {%endblock%}
+       
+
